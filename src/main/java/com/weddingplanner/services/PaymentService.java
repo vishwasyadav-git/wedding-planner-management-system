@@ -1,6 +1,7 @@
 package com.weddingplanner.services;
 
 import com.weddingplanner.models.Payment;
+import com.weddingplanner.repositories.ClientRepository;
 import com.weddingplanner.repositories.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +12,12 @@ import java.util.List;
 @Service
 public class PaymentService {
     private final PaymentRepository paymentRepository;
+    private final ClientRepository clientRepository;
 
     @Autowired
-    public PaymentService(PaymentRepository paymentRepository) {
+    public PaymentService(PaymentRepository paymentRepository, ClientRepository clientRepository) {
         this.paymentRepository = paymentRepository;
+        this.clientRepository = clientRepository;
     }
 
     public Payment recordPayment(Payment payment) {

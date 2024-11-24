@@ -29,9 +29,11 @@ public class VendorController {
     }
 
     @PatchMapping("/{id}/updateAvailability")
-    public ResponseEntity<Void> updateVendorAvailability(@PathVariable Long id, @RequestParam boolean availability) {
+    public ResponseEntity<String> updateVendorAvailability(
+            @PathVariable Long id,
+            @RequestParam boolean availability) {
         vendorService.updateVendorAvailability(id, availability);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok("Vendor availability updated successfully");
     }
 
     @GetMapping("/available")
